@@ -5,6 +5,7 @@
 #include"dslkdon.h"
 #include"dslkdoi.h"
 #include"dslkvong.h"
+#include<string>
 void clearScreen() {
 	system("cls");
 }
