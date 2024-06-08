@@ -1,3 +1,5 @@
+#include<iostream>
+using namespace std;
 void nhapThongTinSinhVien(string &stt, string &mssv, string &holot, string &ten, string &malop, string &diem) {
     cout << "Nhap STT: ";
     cin >> stt;
