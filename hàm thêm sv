@@ -1,0 +1,15 @@
+void nhapThongTinSinhVien(string &stt, string &mssv, string &holot, string &ten, string &malop, string &diem) {
+    cout << "Nhap STT: ";
+    cin >> stt;
+    cout << "Nhap MSSV: ";
+    cin >> mssv;
+    cout << "Nhap Ho lot: ";
+    cin.ignore();
+    getline(cin, holot);
+    cout << "Nhap Ten: ";
+    getline(cin, ten);
+    cout << "Nhap Ma lop: ";
+    cin >> malop;
+    cout << "Nhap Diem: ";
+    cin >> diem;
+}
