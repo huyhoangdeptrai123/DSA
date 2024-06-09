@@ -47,7 +47,99 @@ void nhapThongTinSinhVien(string &stt, string &mssv, string &holot, string &ten,
     cout << "Nhap Diem: ";
     cin >> diem;
 }
+void xoaTheoMSSV_dslk_don(node_dslk_don* &head, const string &mssv) {
+    node_dslk_don* prev = NULL;
+    node_dslk_don* curr = head;
+    while (curr != NULL && curr->data.mssv != mssv) {
+        prev = curr;
+        curr = curr->next;
+    }
+    if (curr == NULL) {
+        cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
+        return;
+    }
+    if (prev == NULL) {
+        head = curr->next;
+    } else {
+        prev->next = curr->next;
+    }
+    delete curr;
+    cout << "Da xoa sinh vien co MSSV: " << mssv << endl;
+}
+void xoaTheoMSSV_dslk_kep(node_dslk_kep* &head, const string &mssv) {
+    node_dslk_kep* curr = head;
+    while (curr != NULL && curr->data.mssv != mssv) {
+        curr = curr->next;
+    }
+    if (curr == NULL) {
+        cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
+        return;
+    }
+    if (curr->prev != NULL) {
+        curr->prev->next = curr->next;
+    } else {
+        head = curr->next;
+    }
+    if (curr->next != NULL) {
+        curr->next->prev = curr->prev;
+    }
+    delete curr;
+    cout << "Da xoa sinh vien co MSSV: " << mssv << endl;
+}
+void xoaTheoMSSV_dslk_vong(node_dslk_vong* &head, const string &mssv) {
+    if (head == NULL) {
+        cout << "Danh sach rong." << endl;
+        return;
+    }
 
+    node_dslk_vong* prev = NULL;
+    node_dslk_vong* curr = head;
+    do {
+        if (curr->data.mssv == mssv) {
+            if (prev == NULL) {
+                // Xóa đ?u danh sách
+                node_dslk_vong* temp = head;
+                while (temp->next != head) {
+                    temp = temp->next;
+                }
+                if (head->next == head) {
+                    head = NULL;
+                } else {
+                    temp->next = head->next;
+                    head = head->next;
+                }
+                delete curr;
+            } else {
+                prev->next = curr->next;
+                delete curr;
+            }
+            cout << "Da xoa sinh vien co MSSV: " << mssv << endl;
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    } while (curr != head);
+
+    cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
+}
+void mangSv::xoaTheoMSSV(const string &mssv) {
+    int index = -1;
+    for (int i = 0; i < size; ++i) {
+        if (data[i].mssv == mssv) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
+        return;
+    }
+    for (int i = index; i < size - 1; ++i) {
+        data[i] = data[i + 1];
+    }
+    --size;
+    cout << "Da xoa sinh vien co MSSV: " << mssv << endl;
+}
 void xoaSinhVien(string &mssv) {
     cout << "Nhap MSSV cua sinh vien can xoa: ";
     cin >> mssv;
