@@ -28,6 +28,7 @@ int menu() {
     cout << "|         Ket thuc chuong trinh       |         0         |" << endl;
     cout << " ---------------------------------------------------------" << endl;
     int chose;
+    cout<<"Nhap lua chon: "; 
     cin >> chose;
     return chose;
 }
@@ -97,7 +98,7 @@ void xoaTheoMSSV_dslk_vong(node_dslk_vong* &head, const string &mssv) {
     do {
         if (curr->data.mssv == mssv) {
             if (prev == NULL) {
-                // Xóa đ?u danh sách
+                // Xóa ð?u danh sách
                 node_dslk_vong* temp = head;
                 while (temp->next != head) {
                     temp = temp->next;
@@ -122,24 +123,7 @@ void xoaTheoMSSV_dslk_vong(node_dslk_vong* &head, const string &mssv) {
 
     cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
 }
-void mangSv::xoaTheoMSSV(const string &mssv) {
-    int index = -1;
-    for (int i = 0; i < size; ++i) {
-        if (data[i].mssv == mssv) {
-            index = i;
-            break;
-        }
-    }
-    if (index == -1) {
-        cout << "Khong tim thay sinh vien co MSSV: " << mssv << endl;
-        return;
-    }
-    for (int i = index; i < size - 1; ++i) {
-        data[i] = data[i + 1];
-    }
-    --size;
-    cout << "Da xoa sinh vien co MSSV: " << mssv << endl;
-}
+
 void xoaSinhVien(string &mssv) {
     cout << "Nhap MSSV cua sinh vien can xoa: ";
     cin >> mssv;
@@ -162,7 +146,7 @@ int main() {
     cout << "|-------------------------------------|-------------------|" << endl;
     cout << "| Luu tru bang danh sach lien ket doi |         3         |" << endl;
     cout << "|-------------------------------------|-------------------|" << endl;
-cout << "| Luu tru bang danh sach lien ket vong|         4         |" << endl;
+	cout << "| Luu tru bang danh sach lien ket vong|         4         |" << endl;
     cout << " ---------------------------------------------------------" << endl;
 
     int ptlt = 0;
@@ -248,14 +232,12 @@ sv_dslk_vong.setinfo(stt, mssv, holot, ten, malop, diem);
             xoaSinhVien(mssv);
 
             if (ptlt == 1) {
-                arr.xoaTheoMSSV(mssv);
+                 xoaTheoMSSV_dslk_don(dslk_don, mssv);
             } else if (ptlt == 2) {
-                xoaTheoMSSV_dslk_don(dslk_don, mssv);
+              xoaTheoMSSV_dslk_kep(dslk_kep, mssv);
             } else if (ptlt == 3) {
-                xoaTheoMSSV_dslk_kep(dslk_kep, mssv);
-            } else if (ptlt == 4) {
-                xoaTheoMSSV_dslk_vong(dslk_vong, mssv);
-            }
+                 xoaTheoMSSV_dslk_vong(dslk_vong, mssv);
+            } 
         }
     }
     ip.close();
