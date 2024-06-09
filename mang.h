@@ -44,7 +44,8 @@ class mangSv{
 				cout << endl;
 			}
 		}
-// bubbleSort
+
+// bubbleSort; Goi ham: arr.bubbleSort_Ten(); in ra: arr.duyet_mang();
     void bubbleSort_Ten() { // Xep theo ten
         for (int i = 0; i < this->numberOfSv - 1; ++i) {
             for (int j = 0; j < this->numberOfSv - i - 1; ++j) {
@@ -77,7 +78,7 @@ class mangSv{
     //
     
     
-    // insertionSort
+    // InsertionSort; Goi ham: arr.insertionSort_Ten(); in ra: arr.duyet_mang();
     void insertionSort_Ten() { // xep theo ten
         for (int i = 1; i < this->numberOfSv; ++i) {
             info key = this->sv[i];
@@ -115,7 +116,7 @@ class mangSv{
     }
     //
     
-    // selectionSort
+    // SelectionSort; Goi ham: arr.selectionSort_Ten(); in ra: arr.duyet_mang();
     void selectionSort_Ten() { // xep theo ten
         for (int i = 0; i < this->numberOfSv - 1; ++i) {
             int min_idx = i;
@@ -153,7 +154,7 @@ class mangSv{
     }
     //
     
-    // MergeSort
+    // MergeSort; Goi ham: arr.mergeSort_Ten(0, arr.numberOfSv - 1); -> in ra: arr.duyet_mang;
     void merge_ten(int left, int mid, int right) { // xep theo ten
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -285,7 +286,7 @@ class mangSv{
     
     
     
-    // heapSort
+    // HeapSort; Goi ham: arr.heapSort_Ten(); -> in ra: arr.duyet_mang;
     void heapify_ten(int n, int i) { // xep theo ten
         int largest = i;
         int left = 2 * i + 1;
@@ -355,7 +356,7 @@ class mangSv{
     }
     
     
-    //quickSort
+    // QuickSort; Goi ham: arr.quickSort_Ten(0, arr.numberOfSv - 1); in ra: arr.duyet_mang();
     int partition_ten(int low, int high) { // xep theo ten
         string pivot = this->sv[high].ten;
         int i = (low - 1);
